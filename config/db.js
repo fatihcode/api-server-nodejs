@@ -13,6 +13,4 @@ module.exports = () => {
    mongoose.connection.on('error', (err) => {
       console.log('MongoDB Connect Failed. Error :', err);
    });
-
-
 }

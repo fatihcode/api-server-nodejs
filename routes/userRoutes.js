@@ -18,6 +18,7 @@ router.get('/:id', (req, res) => {
       .catch(err => { res.json(err) })
 })
 
+
 router.post('/', (req, res) => {
    const user = new userModel(req.body)
 
@@ -26,10 +27,12 @@ router.post('/', (req, res) => {
       .catch(err => { res.json(err) })
 })
 
+
 router.delete('/:id', (req, res) => {
    userModel.findByIdAndDelete(req.params.id)
       .then(data => { res.json(data) })
       .catch(err => { res.json(err) })
 })
+
 
 module.exports = router
