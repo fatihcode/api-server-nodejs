@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 module.exports = () => {
 
-   const connectionURL = "mongodb://localhost:27017/usersdb"
+   // const connectionURL = "mongodb://localhost:27017/usersdb"
+   const connectionURL = `mongodb+srv://${process.env.USER_PASS}@cluster0.luqhn.mongodb.net/usersdb`
 
    mongoose.connect(connectionURL, { useNewUrlParser: true })
 
