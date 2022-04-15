@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-   res.header('access-control-allow-origin', 'https://fatihqaz.github.io/');
+   res.header('access-control-allow-origin', 'https://fatihqaz.github.io');
    next();
    });
 
