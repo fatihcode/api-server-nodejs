@@ -8,6 +8,11 @@ const db = require('./config/db')()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use((req, res, next) => {
+   res.header('access-control-allow-origin', '*');
+   next();
+   });
+
 app.use('/users', require('./routes/userRoutes'))
 
 
