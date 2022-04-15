@@ -1,7 +1,8 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const app = express()
-const port = 9000
+const bodyParser = require('body-parser')
+require('dotenv').config();
+
 
 const db = require('./config/db')()
 
@@ -9,11 +10,11 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-   res.header('access-control-allow-origin', '*');
+   res.header('access-control-allow-origin', 'https://fatihqaz.github.io/');
    next();
    });
 
 app.use('/users', require('./routes/userRoutes'))
 
 
-app.listen(process.env.PORT || port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`))
