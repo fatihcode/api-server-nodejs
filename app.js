@@ -1,20 +1,32 @@
 const express = require('express')
 const app = express()
-const bodyParser = require('body-parser')
+const db = require('./config/db')()
 require('dotenv').config();
 
+const cors = require('cors')
 
-const db = require('./config/db')()
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }));
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors())
 
-app.use((req, res, next) => {
-   res.header('access-control-allow-origin', 'https://fatihcode.github.io');
-   next();
-   });
+const whitelist = [
+   'https://fatihcode.github.io',
+   'http://localhost:3000'
+]
 
-app.use('/users', require('./routes/userRoutes'))
+const corsOptions = {
+   origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+         callback(null, true)
+      } else {
+         callback(new Error('Not allowed by CORS'))
+      }
+   }
+}
+
+
+app.use('/', require('./routes/userRoutes'))
 
 
 app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`))

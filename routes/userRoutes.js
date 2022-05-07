@@ -20,6 +20,7 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
+   console.log(req.body);
    const user = new userModel(req.body)
 
    user.save()
