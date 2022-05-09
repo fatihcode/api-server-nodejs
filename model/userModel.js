@@ -9,9 +9,9 @@ const userSchema = new Schema({
       minlength: [3, "The field `{PATH}` must be more than 3 characters!"],
       required: true,
    },
+   phone: { type: String, required: true },
    email: { type: String },
    address: { type: String },
-   phone: { type: String, required: true },
    website: { type: String },
    company: { type: String },
    created_at: { type: Date, default: Date.now }
