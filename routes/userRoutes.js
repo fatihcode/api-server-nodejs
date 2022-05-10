@@ -29,11 +29,18 @@ router.post('/', (req, res) => {
 })
 
 
+router.put('/:id', (req, res) => {
+   console.log(req.body);
+   userModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+      .then(data => { res.json(data) })
+      .catch(err => { res.json(err) })
+})
+
+
 router.delete('/:id', (req, res) => {
    userModel.findByIdAndDelete(req.params.id)
       .then(data => { res.json(data) })
       .catch(err => { res.json(err) })
 })
-
 
 module.exports = router
